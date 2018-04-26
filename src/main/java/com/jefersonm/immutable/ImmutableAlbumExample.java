@@ -8,7 +8,11 @@ public class ImmutableAlbumExample {
     public static void main(String... args) {
         //Construct an album
         List<ImmutableSong> songs = Arrays.asList(new ImmutableSong("I Miss You"), new ImmutableSong("Feeling This"));
-        ImmutableAlbum album = new ImmutableAlbum("I Miss You 2003", "Blink 182", songs);
+        ImmutableAlbum album = new ImmutableAlbum.Builder()
+                .withName("I Miss You 2003")
+                .withArtist("Blink 182")
+                .withSongs(songs)
+                .build();
 
         //Get the album name
         System.out.println(String.format("Album name: %s", album.getName()));
