@@ -3,24 +3,18 @@ package com.jefersonm.immutable;
 import java.util.Arrays;
 import java.util.List;
 
-public class ImmutableAlbumExample {
+public class ImmutableAlbumConstructorExample {
 
     public static void main(String... args) {
-        //Construct an album
         List<ImmutableSong> songs = Arrays.asList(new ImmutableSong("I Miss You"), new ImmutableSong("Feeling This"));
-        ImmutableAlbum album = new ImmutableAlbum.Builder()
-                .withName("I Miss You 2003")
-                .withArtist("Blink 182")
-                .withSongs(songs)
-                .build();
+        ImmutableAlbumConstructor album = new ImmutableAlbumConstructor("I Miss You 2003", "Blink 182", songs);
 
-        //Get the album name
         System.out.println(String.format("Album name: %s", album.getName()));
 
         //Change the album name
+        //When changing the album name, a new object is created, keeping it thread safe on concurrent applications.
         album = album.changeName("I Miss You - Deluxe version");
 
-        //Get the album name
         System.out.println(String.format("Album name: %s", album.getName()));
 
         System.out.println("Album songs");
